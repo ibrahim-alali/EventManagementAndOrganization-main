@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ====== Custom Font Faces ====== */
+
+@font-face {
+    font-family: NataSans-ExtraBold;
+    src: url("assets/fonts/Nata_Sans/static/NataSans-ExtraBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: NataSans-Bold;
+    src: url("assets/fonts/Nata_Sans/static/NataSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: NataSans-Medium;
+    src: url("assets/fonts/Nata_Sans/static/NataSans-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: NataSans-Regular;
+    src: url("assets/fonts/Nata_Sans/static/NataSans-Regular.ttf") format("truetype");
+}
+
+/* ====== Custom SimpleBar Style ====== */
+
+.custom-scrollbar .simplebar-scrollbar::before {
+    background: linear-gradient(to bottom, #5021fc, #380d80);
+    border-radius: 6px;
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+    transform: scaleY(0.8); /* تقصير */
+    transform-origin: center;
+}
+
+.custom-scrollbar-provider .simplebar-scrollbar::before {
+    background: linear-gradient(to bottom, #74dda5, #44cf85);
+    border-radius: 6px;
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+    transform: scaleY(0.8); /* تقصير */
+    transform-origin: center;
+}
+
+.custom-scrollbar-organizer .simplebar-scrollbar::before {
+    background: linear-gradient(to bottom, #ffd058, #ffee96);
+    border-radius: 6px;
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+    transform: scaleY(0.8); /* تقصير */
+    transform-origin: center;
+}
+
+.custom-scrollbar .simplebar-scrollbar:hover::before {
+    background: linear-gradient(to bottom, #6112c2, #380e6b);
+    box-shadow: 0 0 14px rgb(65 0 255 / 70%);
+}
+
+.custom-scrollbar-provider .simplebar-scrollbar:hover::before {
+    background: linear-gradient(to bottom, #3f8861, #114f2e);
+    box-shadow: 0 0 14px rgb(124 211 124 / 70%);
+}
+
+.custom-scrollbar-organizer .simplebar-scrollbar:hover::before {
+    background: linear-gradient(to bottom, #e8c900, #c29200);
+    box-shadow: 0 0 14px rgb(224 186 18 / 80%);
+}
+
+.custom-scrollbar .simplebar-scrollbar,
+.custom-scrollbar-provider .simplebar-scrollbar,
+.custom-scrollbar-organizer .simplebar-scrollbar {
+    width: 10px;
+}
+
+.custom-scrollbar .simplebar-track.simplebar-vertical,
+.custom-scrollbar-provider .simplebar-track.simplebar-vertical,
+.custom-scrollbar-organizer .simplebar-track.simplebar-vertical {
+    background: rgb(0 0 0 / 0%);
+    width: 10px;
+    border-radius: 20px;
+}
+
+/* ====== Custom CSS Animation ====== */
+
+@keyframes gradient-x {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+.animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 6s ease infinite;
+}
+
+@keyframes toast-enter {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 8px, 0) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+@keyframes toast-leave {
+    from {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate3d(0, 8px, 0) scale(0.98);
+    }
+}
+
+.animate-enter {
+    animation: toast-enter 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-leave {
+    animation: toast-leave 0.2s ease-in forwards;
+}
+
+/* ====== Remove default browser calendar icon ====== */
+
+.hide-date-icon::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    display: none;
+}
+
+.hide-date-icon {
+    appearance: none;
+}
+
+.event-hero-gradient {
+    background-color: #0d0221;
+    background-image: radial-gradient(at 15% 25%, rgb(140 70 255 / 35%) 0, transparent 55%),
+    radial-gradient(at 85% 20%, rgb(255 80 160 / 28%) 0, transparent 55%),
+    radial-gradient(at 50% 75%, rgb(60 130 255 / 22%) 0, transparent 55%),
+    radial-gradient(at 10% 85%, rgb(90 110 220 / 25%) 0, transparent 55%),
+    radial-gradient(at 90% 80%, rgb(180 80 255 / 22%) 0, transparent 55%);
+}
+
+.venue-hero-gradient {
+    background-image: linear-gradient(
+            135deg,
+            #0d0221 0%,
+            #1a0a33 18%,
+            #2a124a 36%,
+            #3b1e66 54%,
+            #4e2c85 72%,
+            #6240a3 100%
+    );
+}
+
+/* ==============================
+   FullCalendar custom styling
+============================== */
+
+/* Container */
+.fc {
+  @apply rounded-2xl py-2 whitespace-nowrap border border-emerald-200 shadow-md;
+}
+
+/* Header toolbar */
+.fc .fc-toolbar {
+  @apply px-4 my-4;
+}
+
+.fc .fc-toolbar-title {
+  @apply text-gray-800 font-semibold text-xl tracking-tight;
+
+  font-feature-settings: "ss01", "ss02";
+}
+
+/* All buttons - Enhanced design */
+.fc .fc-button {
+  @apply bg-white text-sm font-nata-sans-md text-gray-700 border border-gray-200 px-4 py-2 rounded-xl 
+         hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-700 
+         transition-all duration-200 ease-out shadow-sm hover:shadow-md;
+}
+
+/* Kill default browser & FullCalendar focus ring */
+.fc .fc-button:focus,
+.fc .fc-button:focus-visible,
+.fc .fc-button:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.fc .fc-button:not(:disabled):active,
+.fc .fc-button:not(:disabled).fc-button-active {
+  @apply bg-emerald-500 ring-1 ring-emerald-300 text-white border-emerald-500 shadow-md;
+}
+
+/* Today button special */
+.fc .fc-today-button {
+  @apply bg-emerald-500 text-white border-emerald-500 hover:bg-emerald-600 hover:border-emerald-600 hover:text-white;
+}
+
+
+/* Current day cell (dayGrid view) */
+.fc .fc-day-today {
+  background-color: #dbf7ec !important; /* emerald-400 */
+}
+
+/* Remove extra borders to clean up */
+.fc .fc-scrollgrid {
+  border: none !important;
+}
+
+/* DayGrid table (grid of dates) */
+.fc .fc-daygrid {
+  @apply bg-white rounded-2xl border border-gray-200;
+
+  overflow: hidden;
+  width: 98%;
+  margin: 0 auto;
+}
+
+.fc .fc-col-header-cell-cushion {
+  @apply text-sm text-gray-700 font-nata-sans-md py-1.5;
+  
+  letter-spacing: 0.5px;
+}
+
+/* Events */
+.fc-event {
+  @apply cursor-pointer rounded-lg bg-emerald-500 text-white px-2 py-1 text-xs shadow-md transition duration-150 hover:bg-emerald-600;
+}
+
+/* Day cells */
+.fc .fc-daygrid-day-frame {
+  @apply transition duration-150 hover:bg-emerald-50;
+}
+
+.fc .fc-daygrid-day-top {
+  @apply justify-center;
+}
+
+.fc .fc-daygrid-day-number {
+  @apply text-gray-800 p-2 font-nata-sans-md rounded-full w-7 h-7 flex items-center justify-center 
+         hover:bg-emerald-100 transition-colors duration-150;
+}
+
+.fc .fc-day-today .fc-daygrid-day-number {
+  @apply bg-emerald-500 text-white font-nata-sans-bd;
+}
+
+/* Hover for timegrid slots */
+.fc .fc-timegrid-slot:hover {
+  @apply bg-gradient-to-r from-emerald-50/30 to-transparent;
+}
+
+.fc .fc-timegrid-axis-cushion {
+  @apply text-gray-500 font-nata-sans-md;
+}
